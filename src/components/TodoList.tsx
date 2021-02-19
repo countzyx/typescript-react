@@ -1,7 +1,12 @@
 import * as React from 'react';
+import { Todo } from '../shared/types';
 
-const TodoList: React.FC = () => {
-  const todos = [{ id: 't1', text: 'Finish the course' }];
+interface Props {
+  todos: Todo[];
+}
+
+const TodoList: React.FC<Props> = (props: Props) => {
+  const { todos } = props;
   return (
     <ul>
       {todos.map((todo) => (
