@@ -7,6 +7,7 @@ interface Props {
 
 const TodoList: React.FC<Props> = (props: Props) => {
   const { todos } = props;
+  console.log(todos, typeof todos);
   return (
     <ul>
       {todos.map((todo) => (

@@ -1,13 +1,20 @@
 import * as React from 'react';
-import type { Todo } from '../shared/types';
 
-const NewTodo: React.FC = () => {
+interface Props {
+  onNewTodo: (todoText: string) => void;
+}
+
+const NewTodo: React.FC<Props> = (props: Props) => {
+  const { onNewTodo } = props;
+
   const todoTextInputRef = React.useRef<HTMLInputElement>(null);
 
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     const todoText = todoTextInputRef.current?.value;
-    console.log(todoText);
+    if (todoText) {
+      onNewTodo(todoText);
+    }
   };
 
   return (
