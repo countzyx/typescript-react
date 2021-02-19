@@ -9,7 +9,6 @@ interface Props {
 
 const TodoList: React.FC<Props> = (props: Props) => {
   const { onDeleteTodo, todos } = props;
-  console.log(todos, typeof todos);
 
   return (
     <ul className={styles.todoList}>

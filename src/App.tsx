@@ -20,7 +20,6 @@ const App: React.FC = () => {
       setTodosState((prevState) => ({
         todos: [...prevState.todos, newTodo],
       }));
-      console.log(todoText);
     },
     [setTodosState],
   );
@@ -31,7 +30,6 @@ const App: React.FC = () => {
         const { todos } = prevState;
         return { todos: todos.filter((todo) => todo.id !== todoId) };
       });
-      console.log(todoId);
     },
     [setTodosState],
   );
