@@ -14,7 +14,7 @@ const initialState: State = {
 
 const App: React.FC = () => {
   const [todosState, setTodosState] = React.useState<State>(initialState);
-  const newTodoHandler = React.useCallback(
+  const createTodoHandler = React.useCallback(
     (todoText: string) => {
       const newTodo = { id: _.uniqueId(), text: todoText };
       setTodosState((prevState) => ({
@@ -25,10 +25,21 @@ const App: React.FC = () => {
     [setTodosState],
   );
 
+  const deleteTodoHandler = React.useCallback(
+    (todoId: string) => {
+      setTodosState((prevState) => {
+        const { todos } = prevState;
+        return { todos: todos.filter((todo) => todo.id !== todoId) };
+      });
+      console.log(todoId);
+    },
+    [setTodosState],
+  );
+
   return (
     <div>
-      <NewTodo onNewTodo={newTodoHandler} />
-      <TodoList todos={todosState.todos} />
+      <NewTodo onNewTodo={createTodoHandler} />
+      <TodoList onDeleteTodo={deleteTodoHandler} todos={todosState.todos} />
     </div>
   );
 };
